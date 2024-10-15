@@ -1,0 +1,64 @@
+{%extends 'base.html'%}
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home page</title>
+    <link rel="stylesheet" href="/static/mystyles.css" class="">
+</head>
+<body>
+    <h1>PRODUCTS TABLE</h1>
+    {%comment%}
+    <table border="2" class="">
+        <tr><th>S/NO</th><th>NAME</th><th>PRICE</th><th>STOCK</th><th>IMAGE URL</th></tr>
+        {%for item in product%}
+        <tr>
+            <td>{{item.code}}</td>
+            <td>{{item.name}}</td>
+            <td>{{item.price}}</td>
+            <td>{{item.stock}}</td>
+        </tr>
+        {%endfor%}
+
+    </table>
+    {%endcomment%}<br>
+
+    
+
+
+{%comment%}<div id='add_products' ><h1>ADD PRODUCTS HERE:</h1>
+    <form action=""  method='post' class="">
+        {%csrf_token%}
+        {{form}}
+        <input type="submit" value="SUBMIT">
+    </form></div>{%endcomment%}
+
+
+{%block content%}
+<div class="col">
+  
+    <div class="row">
+        {%for item in product%}
+        
+<div class="card" style="width: 12rem;">
+    <img src="{{item.image_url}}" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">{{item.name}}</h5>
+      <h4 class="card-text">@Kshs.{{item.price}}</h4>
+      <a href="#" class="btn btn-primary">Add to basket</a>
+    </div>
+  </div>
+  {%endfor%}
+    </div>
+   
+</div>
+
+{%endblock%}
+
+
+
+    
+</body>
+</html>
